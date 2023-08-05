@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="Cucumber" time="6.259" tests="2" skipped="0" failures="0" errors="0">
+<testcase classname="Verify the API suites for places" name="Verify adding a new place via AddNewPlace api" time="5.155">
+<system-out><![CDATA[
+Given Prepare the add new place api request.................................passed
+When User calls "AddPlaceApi" with "POST" request...........................passed
+Then Verify the response code is 200........................................passed
+And Verify the "scope" in the response body is "APP"........................passed
+And Verify the "status" in the response body is "OK"........................passed
+]]></system-out>
+</testcase>
+<testcase classname="Verify the API suites for places" name="Verify deleting a place via AddNewPlace api" time="0.472">
+<system-out><![CDATA[
+Given Prepare the delete place api request..................................passed
+When User calls "DeletePlaceApi" with "POST" request........................passed
+Then Verify the response code is 200........................................passed
+And Verify the "status" in the response body is "OK"........................passed
+]]></system-out>
+</testcase>
+</testsuite>
