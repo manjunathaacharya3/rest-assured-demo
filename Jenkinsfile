@@ -2,19 +2,19 @@ pipeline {
 
     agent any
 
+	triggers {
+	    pollSCM('*/2 * * * *')
+	}
+
     stages {
         stage("Build") {
-	        steps {
-		        dir("rest-assured-demo") {
-		           bat "mvn clean install -DskipTests"  
-		        }		                
+	        steps {		       
+		           bat "mvn clean install -DskipTests"  		        		                
 	        }       
         }
         stage("Test") {
-            steps {
-            	dir("rest-assured-demo") {
-            	   bat "mvn test"
-            	}       
+            steps {           
+            	   bat "mvn test"           	    
             }
         }
     }
