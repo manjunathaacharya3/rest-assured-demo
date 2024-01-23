@@ -2,7 +2,6 @@ pipeline {
 
     agent any
     
-
     parameters {
     choice(choices:[ "stage","test"], description:"Execution enviroment",name:"excEnv")
     string(defaultValue:"@Regression", description:"Specify the tags",name:"runTags")
@@ -10,7 +9,6 @@ pipeline {
     booleanParam(defaultValue:true, description:"Send Execution Report",name:"triggerReport")
     }
     
- 
 	triggers {
 	    pollSCM(env.BRANCH_NAME='master' ? '*/2 * * * *' : '')
 	}
@@ -21,15 +19,13 @@ pipeline {
 		          bat "mvn clean install -DskipTests"		        
 	        }       
         }
-        stage("Test") {
-        
+        stage("Test") {      
               steps {   
-                  dir('./rest-assured-demo'){
-            	   bat "mvn test -Dcucumber.filter.tags=${params.runTags}"          	    
-            }
-        }
+            	  bat "mvn test -Dcucumber.filter.tags=${params.runTags}"          	    
+       		}
         }
     }
+    
     post {
         success {
             emailext subject: 'Execution is successful',
