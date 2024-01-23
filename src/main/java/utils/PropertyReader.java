@@ -8,7 +8,7 @@ import java.util.Properties;
 
 import io.cucumber.datatable.DataTable;
 
-public class Loader {
+public class PropertyReader {
 
 	public static Properties loadPropertyFile(String path) {
 		Properties properties = new Properties();

@@ -14,7 +14,8 @@ import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
 import testdatabuilders.PlaceValidationsTestDataBuilder;
-import utils.Loader;
+import utils.PropertyReader;
+import utils.ExcelReader;
 import utils.ObjectFactory;
 
 public class PlaceValidations extends BaseService {
@@ -25,8 +26,8 @@ public class PlaceValidations extends BaseService {
 	@Given("Prepare the add new place api request")
 	public void prepare_the_add_new_place_api_request(DataTable dataTable) {
 		loadBaseRequestSpec();
-		String name = Loader.loadDataTableMap(dataTable).get("name");
-		String address = Loader.loadDataTableMap(dataTable).get("address");
+		String name = PropertyReader.loadDataTableMap(dataTable).get("name");
+		String address = PropertyReader.loadDataTableMap(dataTable).get("address");
 		super.requestBody = placeValidationsBuilder.getAddPlaceRequest(name, address);
 	}
 

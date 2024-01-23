@@ -27,7 +27,7 @@ import lombok.Getter;
 import lombok.Setter;
 import utils.AppConstants;
 import utils.ConfigReport;
-import utils.Loader;
+import utils.PropertyReader;
 
 @Setter
 @Getter
@@ -44,7 +44,7 @@ public class BaseService {
 			try {
 				PrintStream psLogs = new PrintStream(new File("logs.txt"));
 				baseRequestSpecification = new RequestSpecBuilder()
-						.setBaseUri(Loader.loadPropertyFile(AppConstants.AppPropPath.getLabel()).getProperty("baseUrl"))
+						.setBaseUri(PropertyReader.loadPropertyFile(AppConstants.AppPropPath.getLabel()).getProperty("baseUrl"))
 						.setContentType(ContentType.JSON).addQueryParam("key", "qaclick123")
 						.addFilter(RequestLoggingFilter.logRequestTo(psLogs))
 						.addFilter(ResponseLoggingFilter.logResponseTo(psLogs)).build();
